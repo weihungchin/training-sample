@@ -1,0 +1,21 @@
+.align-middle {
+  vertical-align: middle;
+}
+
+.user-display {
+  min-height: 300px;
+  margin: 20px 50px;
+  border: 1px solid gray;
+}
+
+.input-container {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.create-user {
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 0 20px;
+}

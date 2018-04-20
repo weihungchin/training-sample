@@ -1,0 +1,12 @@
+<button [ngClass]="{'red':isClicked,'green':!isClicked}" (click)="isClicked = !isClicked">
+  Click
+</button>
+
+<app-child-sample [isClick]="isClicked" (isChildClick)="onChildClick($event)
+
+"></app-child-sample>
+
+
+<div style="margin:10px 0"></div>
+
+<button (click)="toUserPage()" style="background-color:red;">Go to User Page</button>

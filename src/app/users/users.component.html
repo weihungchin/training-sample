@@ -1,3 +1,33 @@
-<input placeholder="Name" [(ngModel)]="inputName" name="name">
+<div style="margin-bottom:10px">
+    <button (click)="getAllUsers()">
+        Get Users
+    </button>
+</div>
 
-<button (click)="onAdd()">Add</button>
+
+<div class="user-display">
+    <ul>
+        <li *ngFor="let item of userData">{{item.name}}</li>
+    </ul>
+</div>
+
+<hr>
+
+<div>
+    Current Date (with Pipe): {{rawDate | date:'dd-MM-yyyy'}}
+</div>
+
+<div>
+    Current Date (without Pipe): {{rawDate}}
+</div>
+
+<hr>
+
+<div class="input-container">
+    <input class="align-middle" placeholder="Name" [(ngModel)]="inputName" name="name">
+    <button class="align-middle" (click)="onAdd()">Add</button>
+</div>
+
+<div class="create-user">
+    User created with ID : {{createdUser}}
+</div>

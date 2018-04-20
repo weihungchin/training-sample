@@ -1,46 +1,55 @@
 import { UserService } from './../services/users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnChanges {
   constructor(private userService: UserService) {}
 
   inputName: string;
 
+  userData: any;
+  createdUser: any;
+
+  rawDate: Date = new Date();
+
+  ngOnChanges() {}
   ngOnInit() {
     this.getAllUsers();
   }
 
   getAllUsers() {
     this.userService.getUsers().subscribe(data => {
+      this.userData = data;
       console.log(data);
     });
   }
 
   createUsers(payload) {
     this.userService.createUser(payload).subscribe(data => {
-      this.getOneUser(data.id);
+      this.createdUser = data.id;
+      console.log(data);
     });
+  }
+
+  getUser() {
+    this.userService.getUser('1').subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {}
+    );
   }
 
   onAdd() {
     // this.createUsers();
     const data = {
-      name: this.inputName
+      name: this.inputName,
+      email: 'hello@tech.com'
     };
     this.createUsers(data);
-  }
-
-  getOneUser(id) {
-    this.userService.getUser(id).subscribe(
-      data => {
-        console.log(data);
-      },
-      err => console.log(err)
-    );
   }
 }
